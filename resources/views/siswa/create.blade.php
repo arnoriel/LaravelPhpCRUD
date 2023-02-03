@@ -5,35 +5,54 @@
 	<title>DMS</title>
 </head>
 <body>
-<div class="p-3 mb-2 bg-primary text-white"><h1><a href="{{route('siswa.index')}}"><button type="button" class="btn btn-primary"> < Back </button></a> Data Manajemen Siswa</h1></div>
-	<div class="container">
-	<br>
-	<center>
-	<h3>Tambah Siswa Baru</h3>
-	<form method="post" action="{{route('siswa.store')}}">
-        @csrf
-		<table>
-			<tr>			
-				<td>Nama: </td>
-				<td><input type="text" name="nama"></td>
-			</tr>
-			<tr>
-				<td>NIM: </td>
-				<td><input type="number" name="nim"></td>
-			</tr>
-			<tr>
-				<td>Alamat: </td>
-				<td><input type="text" name="alamat"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" class="btn btn-success" value="Simpan"></td>
-			</tr>		
-		</table>
-	</form>
-	<br>
-    </br>
-</center>
+<div class="p-3 mb-2 bg-primary text-white"><h1></a> Data Manajemen Siswa</h1></div>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">Data Siswa</div>
+				<div class="card-body">
+					<form action="{{route('siswa.store')}}" method="post">
+						@csrf
+						<div class="form-group">
+							<label for="">Masukan Nama Siswa</label>
+							<input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror">
+							@error('nama')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="form-group">
+							<label for="">Masukan NIM Siswa</label>
+							<input type="number" name="nim" class="form-control @error('nim') is-invalid @enderror">
+							@error('nama')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<div class="form-group">
+							<label for="">Masukan Alamat Siswa</label>
+							<input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+							@error('alamat')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+							@enderror
+						</div>
+						<br>
+						<div class="form-group">
+							<button type="reset" class="btn btn-outline-warning">Reset</button>
+							<button type="submit" class="btn btn-outline-success">Simpan</button>
+						</div>
+					</form>
+					<br>
+					<a href="{{route('siswa.index')}}"><button type="button" class="btn btn-block btn-outline-primary"> Kembali </button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

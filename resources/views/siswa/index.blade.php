@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/ebf977d231.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    @include('sweetalert::alert')
    <div class="p-3 mb-2 bg-primary text-white"><h1>Data Manajemen Siswa</h1></div>
    <br>
    </br>
@@ -35,15 +36,15 @@
             <form action="{{route('siswa.destroy', $item->id)}}" method="post">
             @method('delete')
             @csrf
-            <a href="{{route('siswa.edit', $item->id)}}"><button type="button" class="btn btn-success">Edit Siswa</button></a>
-            <a href="{{route('siswa.show', $item->id)}}"><button type="button" class="btn btn-warning">Lihat Siswa</button></a>
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin hapus')">Hapus Siswa</button>
+            <a href="{{route('siswa.edit', $item->id)}}"><button type="button" class="btn btn-block btn-outline-success">Edit Siswa</button></a>
+            <a href="{{route('siswa.show', $item->id)}}"><button type="button" class="btn btn-block btn-outline-warning">Lihat Siswa</button></a>
+            <button type="submit" class="btn btn-block btn-outline-danger" onclick="return confirm('Apakah anda yakin hapus')">Hapus Siswa</button>
             </form>
            </td>
         </tr>
         @endforeach
 	</table>
-  <a href="{{route('siswa.create')}}"><button type="button" class="btn btn-primary">Tambah Siswa</button></a>
+  <a href="{{route('siswa.create')}}"><button type="button" class="btn btn-block btn-outline-primary">Tambah Siswa</button></a>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>

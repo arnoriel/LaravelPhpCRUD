@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Alert;
 
 class SiswaController extends Controller
 {
@@ -48,6 +49,7 @@ class SiswaController extends Controller
         $siswa-> nim = $request->nim;
         $siswa-> alamat = $request->alamat;
         $siswa->save();
+        Alert::success('Sukses Menambah Siswa', 'Siswa Sudah Masuk Database');
         return redirect()->route('siswa.index');
 
     }
@@ -92,11 +94,12 @@ class SiswaController extends Controller
  
          ]);
  
-         $siswa = Siswa::findOrFail($id);
+         $siswa = siswa::findOrFail($id);
          $siswa-> nama = $request->nama;
          $siswa-> nim = $request->nim;
          $siswa-> alamat = $request->alamat;
          $siswa->save();
+         Alert::success('Berhasil Mengedit Siswa', 'Siswa Berhasil Di Update di Database');
          return redirect()->route('siswa.index');
     }
 
@@ -110,6 +113,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
+        Alert::success('Sukses Menghapus Siswa', 'Siswa Sudah dihapus dari Database');
         return redirect()->route('siswa.index');
     }
 }
